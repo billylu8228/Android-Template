@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
+import billy.lu.androidtemplate.tools.FragmentController
 
-abstract class BaseActivity<VB : ViewBinding, VM :ViewModel?>: AppCompatActivity() {
+abstract class BaseActivity<viewBinding : ViewBinding, viewModel :ViewModel?>: AppCompatActivity() {
 
-    private lateinit var mBinding: VB
+    protected lateinit var mViewBinding: viewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = getViewBinding(layoutInflater)
-        setContentView(mBinding.root)
+        mViewBinding = getViewBinding(layoutInflater)
+        setContentView(mViewBinding.root)
         setupViews()
         observeViewModel()
         commandLine()
@@ -23,6 +24,7 @@ abstract class BaseActivity<VB : ViewBinding, VM :ViewModel?>: AppCompatActivity
     abstract fun observeViewModel()
     abstract fun commandLine()
 
-    abstract fun getViewBinding(layoutInflater: LayoutInflater): VB
-    abstract fun getViewModel(): VM
+    abstract fun getViewBinding(layoutInflater: LayoutInflater): viewBinding
+    abstract fun getViewModel(): viewModel
+    abstract fun getFragmentController(): FragmentController
 }
