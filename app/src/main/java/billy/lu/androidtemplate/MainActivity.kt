@@ -1,11 +1,33 @@
 package billy.lu.androidtemplate
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.lifecycle.ViewModelProvider
+import billy.lu.androidtemplate.base.BaseActivity
+import billy.lu.androidtemplate.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+
+
+
+    override fun setupViews() {
+
     }
+
+    override fun observeViewModel() {
+
+    }
+
+    override fun commandLine() {
+
+    }
+
+    override fun getViewBinding(layoutInflater: LayoutInflater): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    override fun getViewModel(): MainViewModel {
+        return ViewModelProvider(this)[MainViewModel::class.java]
+    }
+
+
 }
