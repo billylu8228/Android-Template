@@ -16,11 +16,10 @@ class ApiConnection {
         getRetrofit().create(ApiService::class.java)
     }
 
-
     companion object {
         val instance = ApiConnection()
 
-        private const val BASE_URL = "https://api.takeoutquick.com"
+        private const val BASE_URL = ""
     }
 
 //    suspend fun login(loginRequest: LoginRequest): BaseResponse<LoginResponse> {
@@ -52,13 +51,4 @@ class ApiConnection {
 
         return okHttpBuilder.build()
     }
-
-
-
-
-
-
-
-
-
 }
